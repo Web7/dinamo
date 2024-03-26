@@ -1,0 +1,95 @@
+html
+  height: 100%
+
+body
+  height: 100%
+  background-color: $body-color
+  color: $white
+  display: flex
+  flex-direction: column
+  font-family: 'Noto Sans', sans-serif
+  font-optical-sizing: auto
+  font-weight: 400
+  font-size: 16px
+  line-height: 22px
+
+header
+  flex: 0 0 auto
+main
+  flex: 1 0 auto
+footer
+  flex: 0 0 auto
+
+.nav
+  font-family: 'Noto Sans', sans-serif
+  font-optical-sizing: auto
+  font-style: normal
+  font-weight: 500
+  font-size: 16px
+  line-height: 1
+  margin-left: auto
+  margin-right: auto
+  &-socials
+    line-height: 0
+    a
+      display: inline-block
+      margin-left: 15px
+
+  &-phone
+    display: flex
+    align-items: center
+    color: $white
+    font-family: 'montserratbold'
+    font-size: 21px
+    font-style: normal
+    font-optical-sizing: auto
+    text-decoration: none
+    line-height: 1
+    &:before
+      content: ""
+      display: inline-block
+      background: url(../images/icons.svg#phone) no-repeat center center
+      background-size: contain
+      width: 20px
+      height: 20px
+
+@media (min-width: 960px)
+  .nav
+    &-phone
+      margin-right: 23px
+      &:before
+        margin-right: 10px
+
+h1, .h1
+  font-family: 'Noto Sans', sans-serif
+  font-optical-sizing: auto
+  font-style: normal
+  font-weight: 900
+  font-size: 32px
+  line-height: 40px
+
+h2, .h2
+  font-family: 'Noto Sans', sans-serif
+  font-optical-sizing: auto
+  font-style: normal
+  font-weight: 900
+  font-size: 28px
+  line-height: 40px
+
+@media (min-width: 540px)
+  h1, .h1
+    font-size: 55px
+    line-height: 70px
+
+  h2, .h2
+    font-size: 48px
+    line-height: 70px
+
+.btn
+  min-width: 229px
+  font-weight: 900
+
+  &-outline-dark
+    color: $white
+    border-color: rgba(255, 255, 255, 0.6)
+    background-color: rgba(0, 0, 0, 0.65)

@@ -1,0 +1,96 @@
+.menu
+  &-item
+    background: no-repeat center center
+    background-size: cover
+    width: 100%
+    height: 300px
+    position: relative
+    margin-bottom: 10px
+    &:before
+      content: ""
+      background-color: rgba(0, 0, 0, 0.4)
+      display: block
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+    &-content
+      width: 100%
+      height: 300px
+      padding: 63px
+      display: flex
+      flex-direction: column
+      align-items: center
+      justify-content: center
+      position: relative
+      z-index: 1
+      p
+        font-weight: 800
+        font-size: 24px
+        margin-bottom: 20px
+
+
+@media (min-width: 540px)
+  .menu
+    &-slick
+      margin: 0 auto
+      &-container
+        position: relative
+        .slick-arrow
+          position: absolute
+          height: 100%
+          width: 11.85%
+          top: 0
+          bottom: 0
+          margin: auto
+          z-index: 100
+          -webkit-transform: none
+          transform: none
+          &:before
+            content: ""
+            background: no-repeat center center
+            background-size: contain
+            display: block
+            width: 40px
+            height: 40px
+        .slick-next
+          right: 0
+          &:before
+            background-image: url(../images/arrows.svg#right)
+            margin-right: 95px
+            float: right
+        .slick-prev
+          left: 0
+          &:before
+            background-image: url(../images/arrows.svg#left)
+            margin-left: 95px
+    &-item
+      width: 288px
+      max-width: 288px
+      min-width: 288px
+      height: 508px
+      max-height: 508px
+      min-height: 508px
+      margin-bottom: 0
+      margin-right: 5px
+      &:hover
+        a
+          opacity: 1
+        &:before
+          background-color: transparent
+          background-image: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 60%, rgba(0,0,0,0.6) 100%)
+      &-content
+        width: 288px
+        height: 508px
+        padding: 80px 20px 10px 20px
+
+        p
+          order: 1
+          margin-top: auto
+          line-height: 70px
+          margin-bottom: 0
+        a
+          margin-top: auto
+          order: 0
+          opacity: 0

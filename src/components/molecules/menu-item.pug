@@ -1,0 +1,5 @@
+mixin MenuItem(name, img)
+    .menu-item(style="background-image: url(" + img + ")" data-style="background-image: url(" + img + ")")
+        .menu-item-content
+            p= name
+            a.btn.btn-outline-dark(href="#menu") открыть меню

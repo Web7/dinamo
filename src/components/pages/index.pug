@@ -1,21 +1,23 @@
 extends ../templates/layout
 include ../organisms/menu
 include ../organisms/gallery
+include ../molecules/offcavans-menu
 
 block main
 	main
-		section.main
+		section.main#mainSection
 			.container-fluid.container-xl
 				h1 Попробуй лучшую <div><span class="text-danger">грузинскую</span> кухню.</div>
 				p В нашем ресторане Вы найдете лучшие блюда приготовленные по старинным рецептам грузинской кухни. Потрясающий вкус блюд перенесет Вас к атмосферу невероятного Тбилиси не выходя из дома.
-				a.btn.btn-danger.text-uppercase(href="#menu") ПЕРЕЙТИ К МЕНЮ
-		section.menu
+				a.btn.btn-danger.text-uppercase(href="#menu" data-bs-toggle="offcanvas") ПЕРЕЙТИ К МЕНЮ
+		section.menu#menuSection
 			.text-center
 				h2 Меню
 				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium netus urna hendrerit convallis aliquam consequat turpis.
 			+Menu()
-		section.gallery
+		section.gallery#gallerySection
 			.text-center
 				h2 Галлерея
 				p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pretium netus urna hendrerit convallis aliquam consequat turpis.
 			+Gallery()
+	+OffcavansMenu()

@@ -14,9 +14,17 @@
 	};
 
 	var menuSlick;
+	var gallerySlick;
 
 	var initMenu = function() {
 		$('.menu-item').each(function() {
+			var $this = $(this);
+			$this.attr({style: $this.data('style')})
+		});
+	}
+
+	var initGallery = function() {
+		$('.gallery-item').each(function() {
 			var $this = $(this);
 			$this.attr({style: $this.data('style')})
 		});
@@ -34,7 +42,15 @@
 		}]
 	};
 
+	var gallerySlickSettings = {
+		infinite: true,
+		slidesToShow: 1,
+		dots: true,
+		arrows: false
+	}
+
 	var $menuSlick = $('.menu-slick');
+	var $gallerySlick = $('.gallery-slick');
 
 	var initMenuSlick = function() {
 		if ($menuSlick.exists()) {
@@ -42,17 +58,38 @@
 		}
 	}
 
+	var initGallerySlick = function() {
+		if ($gallerySlick.exists()) {
+			gallerySlick = $gallerySlick.slick(gallerySlickSettings);
+		}
+	}
+
+	var initSliders = function() {
+		var windowWidth = $(window).width()
+		if( windowWidth > 540 &&  !menuSlick.hasClass('slick-initialized')) {
+			$menuSlick.slick(menuSlickSettings);
+		}
+		if (windowWidth > 540 && gallerySlick && gallerySlick.hasClass('slick-initialized')) {
+			$gallerySlick.slick('unslick');
+		}
+		if (windowWidth < 540 && !$gallerySlick.hasClass('slick-initialized')) {
+			gallerySlick = $gallerySlick.slick(gallerySlickSettings);
+		}
+	}
+
 	$(function(){
 		initMenuSlick();
+		initSliders();
 		initMenu();
+		initGallery();
 	});
 
 	$(window).on('resize', function () {
-		if( $(window).width() > 540 &&  !menuSlick.hasClass('slick-initialized')) {
-			$menuSlick.slick(menuSlickSettings);
-		}
+		initSliders();
+
 		setTimeout(function(){
 			initMenu();
+			initGallery();
 		}, 100)
 	});
 

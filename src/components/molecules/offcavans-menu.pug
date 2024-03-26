@@ -1,0 +1,30 @@
+mixin OffcavansMenu()
+    .offcanvas.offcanvas-end.offcanvas-menu#menu
+        .offcanvas-body(data-bs-dismiss="offcanvas")
+            .row.row-cols-2.row-cols-lg-4.offcanvas-menu-images-container
+                img(src="images/offmenu1.jpg" alt="" title="")
+                img(src="images/offmenu2.jpg" alt="" title="")
+                img(src="images/offmenu3.jpg" alt="" title="")
+                img(src="images/offmenu4.jpg" alt="" title="")
+            .text-center
+                h3 Холодные закуски
+            - var n = 0
+            .row.row-cols-1.row-cols-lg-2
+                each i in [0,1,2,3,4,5,6,7,8,9]
+                    .col
+                        .d-flex.offcanvas-menu-col
+                            .offcanvas-menu-info
+                                .d-flex
+                                    h4 Сациви из курицы
+                                    .offcanvas-menu-price.ms-auto
+                                        span.h4.text-nowrap 390 грн
+                                .offcanvas-menu-info-block
+                                    .offcanvas-menu-calories
+                                        span 200гр
+                                        span КБЖУ: 320/16/27/4
+                                    p Состав: кур. грудка 100г; орех грец. 60г; вода 20г; шафран 5г; уксус винный 1,5 ст.л.; масло слив. 2ст.л.; соль,перец по вкусу; хмели-сунели 1ч.л.;чеснок 5г; лук репчатый 10г.
+            .row.row-cols-2.row-cols-lg-4.offcanvas-menu-images-container
+                img(src="images/offmenu5.jpg" alt="" title="")
+                img(src="images/offmenu6.jpg" alt="" title="")
+                img(src="images/offmenu7.jpg" alt="" title="")
+                img(src="images/offmenu8.jpg" alt="" title="")

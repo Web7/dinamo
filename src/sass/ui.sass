@@ -76,6 +76,21 @@ h2, .h2
   font-size: 28px
   line-height: 40px
 
+h3, .h3
+  font-family: 'Noto Sans', sans-serif
+  font-optical-sizing: auto
+  font-style: normal
+  font-weight: 900
+  font-size: 28px
+
+h4, .h4
+  font-family: 'Noto Sans', sans-serif
+  font-optical-sizing: auto
+  font-style: normal
+  font-weight: 700
+  font-size: 18px
+  line-height: 20px
+
 @media (min-width: 540px)
   h1, .h1
     font-size: 55px
@@ -83,6 +98,9 @@ h2, .h2
 
   h2, .h2
     font-size: 48px
+    line-height: 70px
+
+  h3, .h3
     line-height: 70px
 
 .btn
@@ -93,3 +111,13 @@ h2, .h2
     color: $white
     border-color: rgba(255, 255, 255, 0.6)
     background-color: rgba(0, 0, 0, 0.65)
+
+@media (min-width: 540px)
+  .row-md
+    --bs-gutter-x: 1.5rem
+    --bs-gutter-y: 0
+    display: flex
+    flex-wrap: wrap
+    margin-top: calc(-1* var(--bs-gutter-y))
+    margin-right: calc(-.5* var(--bs-gutter-x))
+    margin-left: calc(-.5* var(--bs-gutter-x))

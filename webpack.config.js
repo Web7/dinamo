@@ -6,13 +6,16 @@ const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const PAGES = fs.readdirSync('./src/components/pages/').filter(fileName => fileName.endsWith('.pug'));
+const FileManagerPlugin = require('filemanager-webpack-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 
 const configureCopy = () => {
     return [
-        // {from: "src/video/", to: "video/"},
+        // {from: 'src/video/', to: 'video/'},
         {from: 'src/images/', to: 'images/'},
-        // {from: 'src/fonts/', to: 'fonts/'},
-        {from: 'src/js/', to: 'js/'}
+        {from: 'src/fonts/', to: 'fonts/'},
+        // {from: 'src/js/', to: 'js/'},
+        // {from: 'src/css/', to: 'css/'}
     ]
 };
 
@@ -35,7 +38,10 @@ module.exports = {
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
-                }
+                },
+                generator: {
+                    filename: 'js/[name][ext]'
+                },
             },
             {
                 test: /\.(svg|png|jpg|gif|jpeg)$/,
@@ -74,9 +80,20 @@ module.exports = {
                     MiniCssExtractPlugin.loader,
                     // 'style-loader', // style nodes from js strings
                     'css-loader',
-                    'sass-loader'
+                    'sass-loader',
                 ]
-            }
+            }, {
+                test: /\.css$/i,
+                use: [
+                    {
+                        loader: "style-loader",
+                        options: {
+                            insert: "body",
+                        },
+                    },
+                    "css-loader",
+                ],
+            },
         ]
     },
 
@@ -87,24 +104,36 @@ module.exports = {
     },
 
     plugins: [
+        new FileManagerPlugin({
+            events: {
+                onStart: {
+                    delete: ['docs'],
+                },
+            }
+        }),
         new CopyWebpackPlugin({
             patterns: configureCopy()
         }),
         new MiniCssExtractPlugin({
             filename: 'css/style.css',
-            chunkFilename: '[id].css'
+            chunkFilename: '[id].css',
         }),
         ...PAGES.map(page => new HtmlWebPackPlugin({
                 template: `./src/components/pages/${page}`,
                 filename: `${page.replace(/\.pug/, '.html')}`,
                 file: require('./src/data/index.json'),
-                cache: false
+                cache: false,
+                minify: {
+                    collapseWhitespace: true
+                }
             })
         )
     ],
 
     optimization: {
-        minimizer: [new TerserPlugin()],
+        minimizer: [new TerserPlugin(), new CssMinimizerPlugin(),],
+
+        minimize: true,
 
         splitChunks: {
             cacheGroups: {

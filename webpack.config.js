@@ -124,7 +124,19 @@ module.exports = {
                 file: require('./src/data/index.json'),
                 cache: false,
                 minify: {
-                    collapseWhitespace: true
+                    html5                          : true,
+                    collapseWhitespace             : true,
+                    minifyCSS                      : true,
+                    minifyJS                       : true,
+                    minifyURLs                     : true,
+                    removeAttributeQuotes          : true,
+                    removeComments                 : true, // false for Vue SSR to find app placeholder
+                    removeEmptyAttributes          : true,
+                    removeOptionalTags             : true,
+                    removeRedundantAttributes      : true,
+                    removeScriptTypeAttributes     : true,
+                    removeStyleLinkTypeAttributes  : true,
+                    useShortDoctype                : true
                 }
             })
         )
